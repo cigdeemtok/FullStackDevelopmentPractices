@@ -18,17 +18,17 @@ The curriculum followed a careful path through the following core topics:
 Each project represents a milestone in the course, demonstrating specific technical competencies. You can see detailed explanations of the project, installation guides, app screenshots and more by clicking the project names from the list below:
 
 ### 📚 [Book Notes Manager](https://github.com/cigdeemtok/FullStackDevelopmentPractices/tree/main/CapstoneProject5-BookNotes)
-*Focused on: Database Design & Integration*
+*Focused on: Database Design & Integration*  
 A sophisticated personal library tracker. It utilizes the [**Open Library API**](https://openlibrary.org/developers/api) to fetch book metadata by ISBN and stores personal ratings/reviews in a **PostgreSQL** database.
 > [View Screenshots](https://github.com/cigdeemtok/FullStackDevelopmentPractices/tree/main/CapstoneProject5-BookNotes/public/assets/screenshots)
 
 ### 🎮 [Trivia Quiz Game](https://github.com/cigdeemtok/FullStackDevelopmentPractices/tree/main/CapstoneProject4-QuizApp)
-*Focused on: External API Integration & Asynchronous JS*
+*Focused on: External API Integration & Asynchronous JS*  
 An interactive quiz engine that fetches real-time questions from the [OpenTDB API](https://opentdb.com/api_config.php). Key features include category selection, difficulty filtering, and a custom-built scoring algorithm.
 > [View Screenshots](https://github.com/cigdeemtok/FullStackDevelopmentPractices/tree/main/CapstoneProject4-QuizApp/public/assets/screenshots)
 
 ### 🖋️ [Blog Web App](https://github.com/cigdeemtok/FullStackDevelopmentPractices/tree/main/CapstoneProject3-BlogWebApp)
-*Focused on: CRUD Operations & Server-Side Rendering*
+*Focused on: CRUD Operations & Server-Side Rendering*  
 A full-featured blogging platform where users can create, read, update, and delete posts. This project highlights the use of **EJS templating** and handling dynamic routing in Express.
 > [View Screenshots](https://github.com/cigdeemtok/FullStackDevelopmentPractices/tree/main/CapstoneProject3-BlogWebApp/public/assets/screenshots)
 
