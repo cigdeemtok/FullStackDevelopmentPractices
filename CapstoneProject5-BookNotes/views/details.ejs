@@ -1,0 +1,91 @@
+<%- include("partials/header.ejs") %>
+<div class="container-fluid px-md-5 my-5 flex-grow-1">
+    <% if (locals.status === "editError") { %>
+  <div class="alert alert-danger alert-dismissible fade show container mt-3" role="alert">
+    <strong>Error!</strong> The book could not be edited.
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+<% } %>
+<% if (locals.status === "editSuccess") { %>
+  <div class="alert alert-success alert-dismissible fade show container mt-3" role="alert">
+    The book edited successfully.
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+<% } %>
+    <% if(locals.book){ %>
+  <div class="card details-card border-0 overflow-hidden">
+    <div class="row g-0">
+      
+      <div class="col-md-3 p-4 border-end bg-white">
+        <div class="detail-sidebar-content">
+        <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-L.jpg" 
+             class="img-fluid rounded shadow-sm mb-4" 
+             alt="<%= book.title %>" 
+             style="width: 100%; max-height: 500px; object-fit: contain;">
+        
+          <h5 class="fw-bold mb-1"><%= book.author %></h5>
+          <p class="text-muted small mb-2">
+      <strong>ISBN:</strong> <%= book.isbn %>
+    </p>
+          <div class="rating-stars mb-2">
+            <% for(let i=0; i<5; i++) { %>
+              <i class="bi <%= i < book.rating ? 'bi-star-fill' : 'bi-star' %>"></i>
+            <% } %>
+          </div>
+          <p class="text-muted small"><i class="bi bi-calendar3"></i>
+          Read on: <%= new Date(book.date_read).toLocaleDateString('tr-TR') %></p>
+        </div>
+
+        <div class="d-grid gap-2 mt-4 w-100 px-3">
+          <a href="/editBook/<%= book.id %>" class="btn btn-forest">
+            <i class="bi bi-pencil-square"></i> Edit Review
+          </a>
+          <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+            <i class="bi bi-trash"></i> Delete
+          </button>
+        </div>
+      </div>
+
+      <div class="col-md-9 p-5 bg-white">
+        <h1 class="display-4 fw-bold mb-4" style="color: #1a2414;"><%= book.title %></h1>
+        
+        <div class="content-section">
+          <h4 class="fw-bold border-bottom pb-2 mb-3">About the Book</h4>
+          <p class="lead" style="line-height: 1.8;">
+            <%= book.description %>
+          </p>
+        </div>
+
+        <div class="content-section">
+          <h4 class="fw-bold border-bottom pb-2 mb-3">My Personal Notes</h4>
+            <p  class="lead" style="line-height: 1.8;">
+              "<%= book.notes %>"
+            </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body text-center p-4">
+        <h5 class="mb-3">Are you sure?</h5>
+        <p class="text-muted">This action will permanently delete your review for <b><%= book.title %></b>.</p>
+        <div class="d-flex justify-content-center gap-3 mt-4">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <form action="/delete/<%= book.id %>" method="POST">
+            <button type="submit" class="btn btn-danger px-4">Yes, Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% }else{ %>
+     <div class="alert alert-light border-secondary mt-5">Error getting book details, try again. <%= locals.error %></div>
+  <% } %>
+</div>
+
+<%- include("partials/footer.ejs") %>

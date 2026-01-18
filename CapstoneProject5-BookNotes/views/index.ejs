@@ -1,0 +1,68 @@
+<%- include("partials/header.ejs") %>
+<div class="container d-flex flex-column align-items-center flex-grow-1 mt-2 mb-5">
+<% if (locals.status === "add") { %>
+  <div class="alert alert-danger alert-dismissible fade show container mt-3" role="alert">
+    <strong>Error!</strong> The book could not be added. Please try again.
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+<% } %>
+<% if (locals.status === "exist") { %>
+  <div class="alert alert-danger alert-dismissible fade show container mt-3" role="alert">
+    <strong>Error!</strong> The book already exist in database.
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+<% } %>
+<% if(locals.books && books.length > 0){ %>
+<!-- Books card -->
+<% books.forEach(book => { %>
+<div class="card book-card mb-4">
+  <div class="row g-0 h-100">
+    <div class="col-4 h-100">
+      <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" 
+           class="book-cover" 
+           alt="<%= book.title %>">
+    </div>
+    
+    <div class="col-8 d-flex flex-column p-4 h-100">
+      <div class="d-flex justify-content-between align-items-start w-100 mb-1">
+          <div class="title-wrapper overflow-hidden">
+            <h5 class="card-title fw-bold text-dark mb-0 text-truncate"><%= book.title %></h5>
+            <p class="text-muted small mb-0">by <%= book.author %></p>
+          </div>
+          <div class="text-end ps-2 flex-shrink-0" style="min-width: 90px;">
+            <div class="rating-stars mb-1">
+          <% for(let i=0; i<5; i++) { %>
+            <i class="bi <%= i < book.rating ? 'bi-star-fill' : 'bi-star' %>"></i>
+          <% } %>
+        </div>
+            <small class="text-muted" style="font-size: 0.7rem;">
+              <i class="bi bi-calendar3"></i> <%= new Date(book.date_read).toLocaleDateString('tr-TR') %>
+            </small>
+          </div>
+        </div>
+
+        <hr class="my-2" style="border-top: 1px solid #1a2414; opacity: 0.15;">
+        
+        <div class="flex-grow-1 overflow-hidden">
+          <p class="card-text text-secondary small card-text-custom">
+            <strong>My Notes:</strong> <%= book.notes %>
+          </p>
+        </div>
+
+        <div class="mt-auto d-flex justify-content-between align-items-center pt-2">
+            <small class="text-muted" style="font-size: 0.75rem;">
+      <strong>ISBN:</strong> <%= book.isbn %>
+    </small>
+          <a href="/details/<%= book.id %>" class="btn btn-forest">
+            Review Details <i class="bi bi-chevron-right ms-1"></i>
+          </a>
+        </div>
+    </div>
+  </div>
+</div>
+<% }); %> 
+<% } else{ %>
+    <div class="alert alert-light border-secondary mt-5">There is no book to review yet.</div>
+<% } %>
+</div>
+<%- include("partials/footer.ejs") %>
