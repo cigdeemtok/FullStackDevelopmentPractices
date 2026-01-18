@@ -1,0 +1,98 @@
+<%- include("partials/header.ejs") %>
+
+<!-- Main home content-->
+<div class="container flex-grow-1 col-xl-10 col-xxl-8 px-4 py-5">
+  <div class="row align-items-center g-lg-5 py-5">
+    <div class="col-lg-7 text-center text-lg-start">
+      <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">
+        Welcome to Trivia Quiz Game!
+      </h1>
+      <p class="col-lg-10 fs-4">
+        This is a website created using a public API that is 
+        <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="https://opentdb.com/api_config.php" target="_blank">
+            Trivia Public API
+        </a> 
+        Here you can select question number, category, difficulity etc. to form a trivia
+        quiz. Based on your selection you will have customizable trivia. You can
+        make selections or just get mixed number of questions with any type.
+        After making your preferences you can start by clicking the start quiz
+        button. Have fun!
+      </p>
+    </div>
+    <div class="col-md-10 mx-auto col-lg-5">
+      <form
+        action="/quiz"
+        id="form"
+        class="form"
+        method="POST"
+      >
+        <div class="form-floating mb-3">
+          <input
+            type="number"
+            class="form-control"
+            id="floatingNumber"
+            name="numberOfQuestions"
+            placeholder="Number of Questions"
+            required
+          />
+          <label for="floatingNumber">Number Of Questions (Max 50)</label>
+        </div>
+        <div class="form-floating mb-3">
+          <select
+            class="form-select"
+            name="categoryType"
+            id="floatingCategorySelect"
+            aria-label="Floating label category select"
+          >
+            <option selected value="">Any Category</option>
+            <option value="9">General Knowledge</option>
+            <option value="10">Books</option>
+            <option value="11">Film</option>
+            <option value="15">Video Games</option>
+            <option value="16">Board Games</option>
+            <option value="18">Computers</option>
+            <option value="20">Mythology</option>
+            <option value="21">Sports</option>
+            <option value="23">History</option>
+            <option value="26">Celebrities</option>
+            <option value="28">Vehicles</option>
+          </select>
+          <label for="floatingCategorySelect">Select Category</label>
+        </div>
+        <div class="form-floating mb-3">
+          <select
+            class="form-select"
+            name="difficultyType"
+            id="floatingDifficultySelect"
+            aria-label="Floating label difficulty select"
+          >
+            <option selected value="">Any Difficulty</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+          <label for="floatingDifficultySelect">Select Difficulty</label>
+        </div>
+        <div class="form-floating mb-3">
+          <select
+            class="form-select"
+            name="answerType"
+            id="floatingAnswerTypeSelect"
+            aria-label="Floating label answer type select"
+          >
+            <option selected value="">Any Type</option>
+            <option value="multiple">Multiple Choice</option>
+            <option value="boolean">True/False</option>
+          </select>
+          <label for="floatingAnswerTypeSelect">Select Answer Type</label>
+        </div>
+
+        <button type="submit" class="form-submit w-100 btn btn-lg btn-primary">
+          Start Quiz
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include("partials/footer.ejs") %>

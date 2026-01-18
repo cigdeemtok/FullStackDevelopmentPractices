@@ -1,0 +1,69 @@
+<%- include("partials/header.ejs") %>
+<!-- Main quiz content-->
+<div
+  class="container flex-grow-1 d-flex flex-column align-items-center justify-content-start py-5"
+>
+  <% if(locals.questions){ %>  
+  <div class="row w-100 justify-content-center">
+    <div class="col-md-10 col-lg-8 mb-5">
+      <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body p-5">
+          <h5 class="card-subtitle mb-2 text-muted" id="question-info">
+            Kategori: | Zorluk: 
+          </h5>
+          <h4 class="card-title mb-4" id="question-number">Soru / </h4>
+          <p class="card-text fs-5 fw-medium" id="question-text">
+            
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Answer buttons -->
+  <div class="row w-100 justify-content-center">
+    <div class="col-md-10 col-lg-8" id="answer-buttons-container">
+      </div>
+    </div>
+  </div>
+  <!--Next prev buttons-->  
+  <div class="row w-100 justify-content-center">
+    <div class="col-md-10 col-lg-8">
+      <div class="d-flex justify-content-between">
+        <button
+          type="button"
+          id="prev-btn"
+          class="btn btn-prev btn-primary btn-lg px-5 shadow-sm rounded-pill"
+          disabled
+        >
+          < Prev
+        </button>
+        <button
+          type="button"
+          id="next-btn"
+          class="btn btn-next btn-success btn-lg px-5 shadow-sm rounded-pill"
+        >
+          Next >
+        </button>
+      </div>
+    </div>
+  </div>
+  <% } %>
+  <% if(locals.error){ %>
+  <div class="d-flex justify-content-center align-items-center min-vh-100 bg-light">  
+    <div class="col-12 col-md-6 col-lg-8 text-center p-5 rounded-4 shadow-lg bg-white">
+    <div id="tag-error" class="tag-error mb-3">
+        <!-- Show any errors that were sent from the backend -->
+        <p>Error occured, please try again. <%= error %></p>
+      </div>
+      <a href="/" class="btn btn-primary px-5 shadow-sm" >Go Back</a>
+      </div>
+    </div>
+  <% } %>
+</div>
+<script>
+    const allQuestions = <%- JSON.stringify(locals.questions || []) %>;
+</script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="/js/main.js"></script>
+<%- include("partials/footer.ejs") %>

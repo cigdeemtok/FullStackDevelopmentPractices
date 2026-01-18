@@ -1,0 +1,35 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container flex-grow-1 d-flex flex-column align-items-center justify-content-center py-5">
+    <div class="col-md-8 col-lg-6 text-center">
+        <div class="card shadow-lg border-0 rounded-4 p-5">
+            <h1 class="display-4 mb-3">Quiz Results</h1>
+            
+            <h2 class="mb-4">
+                Your score: 
+                <span class="fw-bold text-success"><%= score %></span> / <%= questionNum %>
+            </h2>
+            
+            <%     
+                // embed score and other given info to message 
+                const resultString = `You answered ${score} questions out of ${questionNum}.`;
+                const percentageString = `(Success Rate: %${percentage})`;
+                
+                let message;
+                
+                if (percentage >= 80) {
+                    message = `🏆 Perfect! ${resultString} ${percentageString} You are a real trivia master.`;
+                } else if (percentage >= 50) {
+                    message = `👍 Good job! ${resultString} ${percentageString} Keep going.`;
+                } else {
+                    message = `🤔 Let's take another quiz and get a better score. ${resultString} ${percentageString} Try harder.`;
+                }
+            %>
+
+            <p class="fs-5 text-muted mb-5"><%- message %></p>
+            
+            <a href="/" class="btn btn-primary btn-lg shadow-sm rounded-pill px-5">Start a New Quiz</a>
+        </div>
+    </div>
+</div>
+<%- include("partials/footer.ejs") %>
