@@ -14,16 +14,16 @@ A fully functional Blog Web Application built as part of The Complete Web Develo
 
 ## 🖼️ Screenshots
 ### Home 
-![Home](CapstoneProject3-BlogWebApp/public/assets/screenshots/home_page.png)
+![Home](public/assets/screenshots/home_page.png)
 
 ### Detail Page
-![Detail Page](CapstoneProject3-BlogWebApp/public/assets/screenshots/detail_page.png)
+![Detail Page](public/assets/screenshots/detail_page.png)
 
 ### Edit Modal
-![Edit Modal](CapstoneProject3-BlogWebApp/public/assets/screenshots/edit_modal.png)
+![Edit Modal](public/assets/screenshots/edit_modal.png)
 
 ### Create Page
-![Create Page](CapstoneProject3-BlogWebApp/public/assets/screenshots/create_page.png)
+![Create Page](public/assets/screenshots/create_page.png)
 
 ## 📦 Installation & Setup
 1. **Clone the repository:**
