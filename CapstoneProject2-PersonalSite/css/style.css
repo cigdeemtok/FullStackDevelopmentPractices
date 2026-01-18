@@ -1,0 +1,55 @@
+.background{
+    background-image: url(https://img.freepik.com/free-photo/turquoise-black-gemstone-textured_53876-96067.jpg?t=st=1734035030~exp=1734038630~hmac=89e26dab915750a45d3120ebc2cecc5606487b309a593a44e7a050c73c6b18f3&w=1380);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    height: fit-content;
+}
+
+#header, #contact-me{
+    background-color: #002225;
+}
+.nav-link{
+    color: white;
+}
+.nav > li > a:hover{
+    color: lightslategray
+}
+.profile-img{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+.about-text, .footer-text{
+    color: white;
+}
+.card-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.card{
+    margin: 0 0.5em;
+    box-shadow: 2px 6px 8px 0px rgba(22,22,26,0.18);
+    border: none;
+    border-radius: 0;
+
+}
+.carousel-inner {
+    padding: 1em;
+  }
+.card img{
+    width: 100%;
+    height: 20vw;
+    object-fit: cover;
+}
+.carousel-control-next,
+.carousel-control-prev {
+    filter: invert(100%);
+}
+.footer{
+    height: 50px;
+}
