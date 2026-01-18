@@ -1,0 +1,43 @@
+<%- include("partials/header.ejs") %>
+
+<!-- Create a blog post form -->
+<div class="container flex-grow-1">
+  <div class="title-create mb-4">
+    <h1>Create Your Post Here</h1>
+  </div>
+  <% if(locals.success){ %>
+    <div class="alert alert-success" role="alert">
+        Post created successfully!
+    </div>
+  <% } %>
+  <% if(locals.error){ %>
+  <div class="alert alert-danger" role="alert">
+    Error! Please try again.
+  </div>
+  <% } %>
+  <form action="/createPost" method="POST">
+    <div class="mb-3">
+      <label for="postImageUrl" class="form-label">Post Image URL</label>
+      <input type="text" class="form-control" name="postImageUrl" id="postImageUrl" required />
+    </div>
+    <div class="mb-3">
+      <label for="postAuthor" class="form-label">Author</label>
+      <input type="text" class="form-control" name="postAuthor" id="postAuthor" required/>
+    </div>
+    <div class="mb-3">
+      <label for="postTitle" class="form-label">Title</label>
+      <input type="text" class="form-control" name="postTitle" id="postTitle" required />
+    </div>
+    <div class="mb-3">
+      <label for="postDesc" class="form-label">Description</label>
+      <input type="text" class="form-control" name="postDesc" id="postDesc" required />
+    </div>
+    <div class="mb-3">
+      <label for="postText" class="form-label">Post Text Area</label>
+      <textarea class="form-control" name="postContent" id="postContent" rows="3" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+<%- include("partials/footer.ejs") %>

@@ -1,0 +1,109 @@
+<%- include("partials/header.ejs") %>
+<!-- Main Content -->
+<div class="d-flex flex-column justify-content-center align-items-center flex-grow-1 mb-3">
+
+ 
+  <% if(locals.posts.length > 0) {%>
+   <div class="home-title mb-4">
+    <h1>Recent Blog Posts</h1>
+  </div>
+    <% posts.forEach((post)=>{ %>
+      <!-- Blog post card start-->
+      <div class="p-2 col-8 col-lg-8 col-md-10 col-sm-10">
+    <div class="card">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="<%= post.imageUrl %>" class="img-fluid rounded-start" alt="clean code post" />
+            </div>
+            <div class="col-md-7">
+              <div class="card-body">
+                <h5 class="card-title"><%= post.title %></h5>
+                <p class="card-text">
+                  <%= post.desc %>
+                </p>
+                <p class="card-text">
+                  <small class="text-body-secondary"
+                    >Author : <%= post.author %> </small
+                  >
+                </p>
+                <a href="/details/<%= post.id %>/<%= toSlug(post.title) %>">Read More -></a>
+              </div>
+            </div>
+            <div class="col-md-1 d-flex justify-content-end">
+              <div class="btn-group">
+                <button type="button" class="btn btn-light" data-bs-toggle="dropdown" aria-expanded="false">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16"><path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/></svg>
+                </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><button class="dropdown-item edit-btn" type="button" 
+                            data-post-id="<%= post.id %>" >
+                  Edit
+                </button></li>
+                <li><button class="dropdown-item delete-btn" type="button" data-post-id="<%= post.id %>">Delete</button></li>
+              </ul> 
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+    <!-- Blog post card end-->
+    <% }) %>
+
+
+  <% } else { %>
+    <p>No posts yet! 
+    <p>Create one by clicking <b>"Create New Post"</b> button on the top right corner.</p>
+    </p>
+  <% } %>
+
+  <!-- Edit Post Modal -->
+  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="editModalLabel">Edit Post</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form id="editForm"> 
+            <input type="hidden" name="id" id="editPostId"> 
+            <div class="mb-3">
+              <label for="editImageUrl" class="form-label">Post Image URL</label>
+              <input type="text" class="form-control" name="editImageUrl" id="editImageUrl" required>
+            </div> 
+
+            <div class="mb-3">
+              <label for="editAuthor" class="form-label">Author</label>
+              <input type="text" class="form-control" name="editAuthor" id="editAuthor" required>
+            </div>
+          
+            <div class="mb-3">
+              <label for="editTitle" class="form-label">Title</label>
+              <input type="text" class="form-control" name="editTitle" id="editTitle" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="editDesc" class="form-label">Description</label>
+              <input class="form-control" name="editDesc" id="editDesc" required></input>
+            </div>
+
+            <div class="mb-3">
+              <label for="editContent" class="form-label">Post Text Area</label>
+              <textarea class="form-control" name="editContent" id="editContent" rows="3" required></textarea>
+            </div>
+        </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" form="editForm" class="btn btn-primary">Save</button>
+        </div>
+
+      </div>    
+    </div>
+  </div>
+
+</div>
+<%- include("partials/footer.ejs") %>
